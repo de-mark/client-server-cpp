@@ -23,11 +23,11 @@ class Server {
         char *serverIp;
         int serverSd;
 
-        int chatSession();
+        int chatSession(void);
     public:
-        Server(int port, int ip){
+        Server(int port){
             this->port = port;
         }
 
-        void init(void);
-}
+        void servListen(void);
+};
