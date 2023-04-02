@@ -65,7 +65,7 @@ int main(int argc, char *argv[]){
     gettimeofday(&start1, NULL);
 
     while (1) {
-        std::cout << ">";
+        std::cout << "YOU: > ";
         std::string data;
         std::getline(std::cin, data);
         memset(&message, 0, sizeof(message));
@@ -77,13 +77,13 @@ int main(int argc, char *argv[]){
         }
 
         bytesWritten += send(clientSd, (char*) &message, strlen(message), 0);
-        std::cout << "Waiting for server response" << std::endl;
+        std::cout << "\nWaiting for server response" << std::endl;
         memset(&message, 0, sizeof(message));
 
         bytesRead += recv(clientSd, (char*)&message, sizeof(message), 0);
 
         if (!strcmp(message, "exit")) {
-            std::cout << "Server has closed chat room" << std::endl;
+            std::cout << "\nServer has closed chat room" << std::endl;
             break;
         } 
 
@@ -94,7 +94,9 @@ int main(int argc, char *argv[]){
     gettimeofday(&end1, NULL);
     close(clientSd);
 
+    std::cout << std::endl << std::endl;
     std::cout << "CHAT CLIENT SUMMARY" << std::endl;
+    std::cout << "----------------------" << std::endl; 
     std::cout << "Started:" << start1.tv_usec << std::endl;
     std::cout << "Duration: " << (end1.tv_sec - start1.tv_sec) << "seconds" << std::endl; 
     std::cout << "Bytes Written: " << bytesWritten << std::endl;

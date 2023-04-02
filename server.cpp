@@ -68,7 +68,7 @@ int main(int argc, char *argv[]){
         exit(0);
     }
 
-    std::cout << "CHAT SERVER UP AND RUNNING!" << std::endl;
+    std::cout << "\nCHAT SERVER UP AND RUNNING!" << std::endl;
 
     totalClients += chatSession(serverSd);
     
@@ -117,7 +117,7 @@ int chatSession(int serverSd){
         }
 
         std::cout << "CLIENT: " << message << std::endl;
-        std::cout << ">";
+        std::cout << "SERVER: > ";
 
         std::string data;
         std::getline(std::cin, data);
@@ -138,13 +138,16 @@ int chatSession(int serverSd){
     close(newSd);
     close(serverSd);
 
+    std::cout << std::endl << std::endl;
     std::cout << "CHAT SERVER SUMMARY" << std::endl;
+    std::cout << "----------------------" << std::endl;
     std::cout << "Started:" << start1.tv_usec << std::endl;
     std::cout << "Duration: " << (end1.tv_sec - start1.tv_sec) << "seconds" << std::endl; 
     std::cout << "Bytes Written: " << bytesWritten << std::endl;
     std::cout << "Bytes Read: " << bytesRead << std::endl << std::endl;
 
-    std::cout << "Returning to listening mode" << std::endl;
+    // Later : Returning to listening mode
+    std::cout << "Closing Chat" << std::endl;
 
     return 1;
 };
