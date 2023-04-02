@@ -18,9 +18,13 @@
 #include <fcntl.h>
 #include <fstream>
 
+int chatSession(int serverSd);
+
 // Takes in server port parameters when initially run
 int main(int argc, char *argv[]){
     
+    int totalClients = 0;
+
     // We at least need to know what port the server will run on
     // Closes program if this is not provided
     if (argc != 2) {
@@ -29,9 +33,8 @@ int main(int argc, char *argv[]){
     }
 
     const int PORT = std::atoi(argv[1]);
-    char message[3000];
 
-sockaddr_in serveAddress;
+    sockaddr_in serveAddress;
     bzero((char*) &serveAddress, sizeof(serveAddress));
 
     // sin_family is the type of address; most internet-based addresses use AF_INET
@@ -66,8 +69,17 @@ sockaddr_in serveAddress;
     }
 
     std::cout << "CHAT SERVER UP AND RUNNING!" << std::endl;
-    std::cout << "Waiting for client to connect..." << std::endl << std::endl;
 
+    totalClients += chatSession(serverSd);
+    
+
+    return 0;
+}
+
+int chatSession(int serverSd){
+    char message[3000];
+
+    std::cout << "Waiting for client to connect..." << std::endl << std::endl;
     // Server listens for a maximum of 3 requests at once
     listen(serverSd, 3);
 
@@ -82,6 +94,7 @@ sockaddr_in serveAddress;
 
     if (newSd < 0) {
         std::cerr << "Error accepting request from client" << std::endl;
+        return 0;
     }
 
     std::cerr << "Client connected!" << std::endl;
@@ -131,7 +144,7 @@ sockaddr_in serveAddress;
     std::cout << "Bytes Written: " << bytesWritten << std::endl;
     std::cout << "Bytes Read: " << bytesRead << std::endl << std::endl;
 
-    std::cout << "Closing chat" << std::endl;
+    std::cout << "Returning to listening mode" << std::endl;
 
-    return 0;
-}
+    return 1;
+};

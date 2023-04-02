@@ -83,7 +83,7 @@ int main(int argc, char *argv[]){
         bytesRead += recv(clientSd, (char*)&message, sizeof(message), 0);
 
         if (!strcmp(message, "exit")) {
-            std::cout << "Server has quit session" << std::endl;
+            std::cout << "Server has closed chat room" << std::endl;
             break;
         } 
 
