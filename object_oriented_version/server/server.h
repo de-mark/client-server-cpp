@@ -19,14 +19,17 @@
 
 class Server {
     private:
-        int port;
+        long port;
         int serverSd;
 
+        // used by servListen; an individual chat with a client
         int chatSession(void);
     public:
-        Server(int port){
+        Server(long port){
             this->port = port;
         }
 
+        // Runs chat from the server end
+        // (Later: Will be able to continue to run and keep track of clients joined)
         void servListen(void);
 };

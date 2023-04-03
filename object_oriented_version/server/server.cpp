@@ -1,5 +1,6 @@
 #include "server.h"
 
+// chatSession() : Runs the chat session the server holds with an instance of Client
 int Server::chatSession(void){
     char message[3000];
 
@@ -38,7 +39,7 @@ int Server::chatSession(void){
         memset(&message, 0, sizeof(message));
         bytesRead += recv(newSd, (char*) &message, sizeof(message), 0);
 
-        if (!strcmp(message, "exit")) {
+        if (!strcmp(message, "bye")) {
             std::cout << "Client has left the chatroom" << std::endl;
             break;
         }
@@ -47,6 +48,7 @@ int Server::chatSession(void){
         std::cout << "SERVER: > ";
 
         std::string data;
+        std::cin.ignore();
         std::getline(std::cin, data);
         memset(&message, 0, sizeof(message));
         strcpy(message, data.c_str());
@@ -79,6 +81,8 @@ int Server::chatSession(void){
     return 1;
 };
 
+// servListen() : Runs chat from the server end
+// Later will add functionality to continue to listen and count clients connected
 void Server::servListen(void){
     int totalClients = 0;
 

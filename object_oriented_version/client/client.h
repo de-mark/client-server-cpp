@@ -19,13 +19,14 @@
 
 class Client {
     private:
-        int port;
+        long port;
         char *serverIp;
     public:
-        Client(int port, char *serverIp) {
+        Client(long port, char* serverIp) {
             this->port = port;
             this->serverIp = serverIp;
         }
 
+        // Runs chat from the client end
         void clientConnect(void);
 };

@@ -5,7 +5,7 @@ Studying for Network+ exam by programming a simple TCP client and server.
 
 Super simple chat client for Linux that allows for one client to communicate with one server. When the client exits, the server program ends.
 
-![Example of server communicating with client; side by side](../screenshots/chat_ex_01.png)
+![Example of server communicating with client; side by side](../screenshots/procedural_chat_ex.png)
 
 ## Purpose 
 

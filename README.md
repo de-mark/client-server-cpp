@@ -5,7 +5,7 @@ Studying for Network+ exam by programming a simple TCP client and server.
 
 Super simple chat client for Linux that allows for one client to communicate with one server. When the client exits, the server program ends.
 
-![Example of server communicating with client; side by side](./screenshots/chat_ex_01.png)
+![Example of server communicating with client; side by side](./screenshots/oop_chat_ex.png)
 
 ## Purpose 
 
@@ -20,47 +20,19 @@ Currently, I'm studying sockets and 'the Zombie Problem' a bit more to allow for
 To install server and client executables using G++ compiler, run:
 
 ```
-g++ server.cpp -o server
+g++ main.cpp object_oriented_version/*/*.h object_oriented_version/*/*.cpp -o chat
 ```
 
-and 
-
-```
-g++ client.cpp -o client
-```
-
-These two executables are meant to run separately.
+This executable can create either a server or a client. 
 
 They CAN run on the same device, but you'll need to use `127.0.0.1` as the IP
 
 ## Running the program
 
-__Server__
-
-Server runs using the command:
+Once you've compiled the program, run:
 
 ```
-server <PORT>
+./chat
 ```
 
-__Client__
-
-Client runs using the command:
-
-```
-client <IP> <PORT>
-```
-
-__To run on local: Server__
-
-```
-server 8080
-```
-
-__To run on local: Client__
-
-(Has to run in another terminal)
-
-```
-client 127.0.0.1 8080
-```
+From there you can decide whether to create a server or client. Remember, the port must match on both and if you've installed them on the same device, make sure to use `127.0.0.1` as the IP.

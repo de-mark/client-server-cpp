@@ -114,7 +114,7 @@ int chatSession(int serverSd){
         memset(&message, 0, sizeof(message));
         bytesRead += recv(newSd, (char*) &message, sizeof(message), 0);
 
-        if (!strcmp(message, "exit")) {
+        if (!strcmp(message, "bye")) {
             std::cout << "Client has left the chatroom" << std::endl;
             break;
         }

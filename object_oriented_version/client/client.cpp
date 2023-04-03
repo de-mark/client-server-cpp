@@ -1,5 +1,6 @@
 #include "client.h"
 
+// clientConnect() : Runs chat from the client end
 void Client::clientConnect(void){
     char message[3000];
 
@@ -30,6 +31,9 @@ void Client::clientConnect(void){
     }
 
     std::cout << "Connected to server" << std::endl;
+    std::cout << "(Type 'bye' at any time to quit)" << std::endl;
+    std::cout << "----------------------" << std::endl; 
+    std::cout << std::endl;
     
     // Keep track of bytes read and written
     int bytesRead = 0, bytesWritten = 0;
@@ -45,7 +49,7 @@ void Client::clientConnect(void){
         memset(&message, 0, sizeof(message));
         strcpy(message, data.c_str());
 
-        if (data == "exit") {
+        if (data == "bye") {
             send(clientSd, (char*)&message, strlen(message), 0);
             break;
         }
