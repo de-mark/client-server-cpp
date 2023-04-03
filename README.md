@@ -1,4 +1,5 @@
 # Simple Linux / C++ Client - Server
+## OOP Version
 
 Studying for Network+ exam by programming a simple TCP client and server.
 
@@ -12,9 +13,7 @@ I'm studying for Network+ and wanted some hands-on understanding of TCP in a cli
 
 ## Future Plans
 
-Currently, I'm working on transforming client and server into classes for future installations.
-
-Also, I need to study the Zombie Problem a bit more to allow for the server to continue to run and acquire several clients sequentially.
+Currently, I'm studying sockets and 'the Zombie Problem' a bit more to allow for the server to continue to run and acquire several clients sequentially.
 
 ## Install
 

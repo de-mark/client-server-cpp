@@ -20,7 +20,6 @@
 class Server {
     private:
         int port;
-        char *serverIp;
         int serverSd;
 
         int chatSession(void);
